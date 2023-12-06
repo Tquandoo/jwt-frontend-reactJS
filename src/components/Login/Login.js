@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { toast } from "react-toastify";
 import { loginUser } from "../../services/userService";
+import { UserContext } from "../../context/UserContext";
 
 const Login = (props) => {
+  const { loginContext } = useContext(UserContext);
+
   let navigate = useNavigate();
   const [valueLogin, setValueLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -34,13 +37,19 @@ const Login = (props) => {
     let response = await loginUser(valueLogin, password);
     if (response && response.EC === 0) {
       //success
+      let groupWithRoles = response.DT.groupWithRoles;
+      let email = response.DT.email;
+      let username = response.DT.username;
+      let token = response.DT.access_token;
       let data = {
         isAuthenticated: true,
-        token: "fake token",
+        token: token,
+        account: { groupWithRoles, email, username },
       };
-      sessionStorage.setItem("account", JSON.stringify(data));
+      localStorage.setItem("jwt", token);
+      loginContext(data);
       navigate("/users");
-      window.location.reload();
+      // window.location.reload();
     }
     if (response && response.EC !== 0) {
       toast.error(response.EM);
@@ -53,12 +62,6 @@ const Login = (props) => {
     }
   };
 
-  useEffect(() => {
-    const session = sessionStorage.getItem("account");
-    if (session) {
-      navigate("/");
-    }
-  }, []);
   return (
     <div className="login-container ">
       <div className="container">

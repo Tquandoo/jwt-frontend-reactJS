@@ -24,3 +24,24 @@ body {
     color: white;
   }
 }
+.nav-header {
+  .bg-header {
+    background-color: #20232a;
+  }
+  a,
+  .nav-link {
+    color: white;
+    &:hover {
+      color: #4bd3d3;
+    }
+  }
+  .dropdown-menu {
+    a {
+      color: #212529;
+
+      &:hover {
+        color: #4bd3d3;
+      }
+    }
+  }
+}

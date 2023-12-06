@@ -1,5 +1,5 @@
 import "./Users.scss";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchAllUser, deleteUser } from "../../services/userService";
 import ReactPaginate from "react-paginate";
 import { toast } from "react-toastify";

@@ -6,6 +6,7 @@ import Register from "../components/Register/Register";
 import PrivateRoutes from "./PrivateRoutes";
 import Users from "../components/ManageUsers/Users";
 import Project from "../components/ProjectUser/ProjectUser";
+import Role from "../components/Role.js/Role";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
         <Route element={<PrivateRoutes />}>
           <Route element={<Users />} path="/users" />
           <Route element={<Project />} path="/project" />
+          <Route element={<Role />} path="/roles" />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
