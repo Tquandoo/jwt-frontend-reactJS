@@ -30,14 +30,6 @@ const NavHeader = (props) => {
   if ((user && user.isAuthenticated === true) || location.pathname === "/") {
     return (
       <>
-        {/* <div className="topnav">
-          <NavLink to="/" exact="true">
-            Home
-          </NavLink>
-          <NavLink to="/users">Users</NavLink>
-          <NavLink to="/project">Projects</NavLink>
-          <NavLink to="/about">About</NavLink>
-        </div> */}
         <div className="nav-header">
           <Navbar expand="lg" className="bg-header">
             <Container>
@@ -45,7 +37,7 @@ const NavHeader = (props) => {
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+                <Nav className="me-auto ">
                   <NavLink to="/" exact="true" className="nav-link">
                     Home
                   </NavLink>
@@ -54,6 +46,9 @@ const NavHeader = (props) => {
                   </NavLink>
                   <NavLink to="/roles" className="nav-link">
                     Roles
+                  </NavLink>
+                  <NavLink to="/group-role" className="nav-link">
+                    Group-Role
                   </NavLink>
                   <NavLink to="/project" className="nav-link">
                     Projects

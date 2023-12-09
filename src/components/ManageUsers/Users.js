@@ -96,7 +96,7 @@ const Users = (props) => {
               </button>
             </div>
           </div>
-          <div className="user-body">
+          {/* <div className="user-body">
             <table className="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -150,6 +150,86 @@ const Users = (props) => {
                 )}
               </tbody>
             </table>
+          </div> */}
+
+          {/* test table mới */}
+          <div className="user-body container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="table-wrap">
+                  <table className="table table-responsive-xl">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Group</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {listUsers && listUsers.length > 0 ? (
+                        <>
+                          {listUsers.map((item, index) => {
+                            return (
+                              <tr
+                                className="alert"
+                                role="alert"
+                                key={`row-${index}`}
+                              >
+                                <td>
+                                  {/* <label className="checkbox-wrap checkbox-primary">
+                                    <input type="checkbox" checked />
+                                    <span className="checkmark"></span>
+                                  </label> */}
+                                  {(currentPage - 1) * currentLimit + index + 1}
+                                </td>
+                                <td className="d-flex align-items-center">
+                                  <div className="pl-3 email">
+                                    <span>{item.id}</span>
+                                  </div>
+                                </td>
+
+                                <td>{item.email}</td>
+                                <td>{item.username}</td>
+                                <td className="status">
+                                  <span className="active">
+                                    {item.Group ? item.Group.name : ""}
+                                  </span>
+                                </td>
+                                <td>
+                                  <span
+                                    title="edit"
+                                    className="edit "
+                                    onClick={() => handleEditUser(item)}
+                                  >
+                                    <i className="fa fa-pencil"></i>
+                                  </span>
+                                  <span
+                                    title="delete"
+                                    className="delete"
+                                    onClick={() => handleDeleteUser(item)}
+                                  >
+                                    <i className="fa fa-trash"></i>
+                                  </span>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          <tr>
+                            <td>Not found users</td>
+                          </tr>
+                        </>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
 
           {totalPages > 0 && (

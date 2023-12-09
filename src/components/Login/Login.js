@@ -1,12 +1,12 @@
 import { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.scss";
 import { toast } from "react-toastify";
 import { loginUser } from "../../services/userService";
 import { UserContext } from "../../context/UserContext";
 
 const Login = (props) => {
-  const { loginContext } = useContext(UserContext);
+  const { user, loginContext } = useContext(UserContext);
 
   let navigate = useNavigate();
   const [valueLogin, setValueLogin] = useState("");
@@ -61,6 +61,12 @@ const Login = (props) => {
       handleLogin();
     }
   };
+
+  useEffect(() => {
+    if (user && user.isAuthenticated) {
+      navigate("/");
+    }
+  });
 
   return (
     <div className="login-container ">
@@ -119,6 +125,11 @@ const Login = (props) => {
               >
                 Create new account
               </button>
+              <div className="mt-3 ">
+                <Link to="/">
+                  <span title="Return to Home Page">Return to Home Page</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

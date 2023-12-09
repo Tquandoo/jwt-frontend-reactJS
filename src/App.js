@@ -7,8 +7,8 @@ import { Router } from "react-router-dom";
 import { Rings } from "react-loader-spinner";
 import { UserContext } from "./context/UserContext";
 import NavHeader from "./components/Navigation/NavHeader";
-
-function App() {
+import { Scrollbar } from "react-scrollbars-custom";
+const App = () => {
   const { user } = useContext(UserContext);
 
   return (
@@ -41,7 +41,7 @@ function App() {
 
       <ToastContainer
         position="bottom-center"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -53,5 +53,5 @@ function App() {
       />
     </>
   );
-}
+};
 export default App;
